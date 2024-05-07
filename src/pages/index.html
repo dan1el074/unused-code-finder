@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/top-bar.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/alert.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha384-Zz2nAHiDMEONvA5mmh6vATa7D9SdO08F5l5mKe6+HU7bPT0ScMp8BrzC5N/E0SNV"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header class="chrome-bar">
+      <div class="descriptions">
+        <img src="./images/icon.png" />
+        <span>Imprime Arquivos</span>
+      </div>
+      <div class="tab-bar">
+        <div class="window-buttons">
+          <div class="minimise">
+            <button id="btnMinimize">
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/windows-minimise.png"
+              />
+            </button>
+          </div>
+          <div class="close">
+            <button id="btnClose">
+              <img
+                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/windows-close.png"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="home">
+      <p>Selecione o arquivo Excel:</p>
+      <div class="input-search">
+        <button id="search-btn" class="btn">Procurar</button>
+        <span id="placeholder">Nenhum arquivo selecionado</span>
+        <span id="new-placeholder"></span>
+      </div>
+      <small id="error" class="error"></small>
+
+      <button id="next-btn" class="btn btn-next">Avançar ></button>
+    </section>
+
+    <section class="action-page">
+      <button id="previous-btn" class="btn btn-previous">< Voltar</button>
+
+      <label for="printers">Selecione a impressora:</label>
+      <select name="printers" id="printers" class="printer-input"></select>
+      <button id="print-btn" class="btn btn-print">Imprimir</button>
+    </section>
+
+    <div class="alert-container"></div>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/window.js"></script>
+    <script src="./js/style.js"></script>
+  </body>
+</html>

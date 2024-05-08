@@ -1,10 +1,12 @@
 const { app, BrowserWindow, Menu, dialog, ipcMain } = require("electron");
+const { exec } = require('child_process');
 const path = require("path");
 const XLSX = require("xlsx");
 
 let window = null;
 let data = {
   path: "",
+  savePath: "",
   fileName: "",
   codes: [],
   oldCodes: [],
@@ -79,12 +81,16 @@ ipcMain.on("app/run", () => {
 });
 
 async function runApplication() {
-  data.codes = [];
   const workbook = XLSX.readFile(data.path);
   const firstSheetName = workbook.SheetNames[0];
   const worksheet = workbook.Sheets[firstSheetName];
   const resExcel = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
   window.webContents.send("message/notice", "Processando arquivo");
+  data.codes = [];
+  data.allCodes = [];
+  data.oldCodes = [];
+  data.savePath = "";
 
   resExcel.forEach((array) => {
     let onlyCodes = String(array[0]).match(/\d{3,9}-?\d{1,3}/);
@@ -102,7 +108,7 @@ async function runApplication() {
     setTimeout(() => {
       window.webContents.send(
         "message/simpleError",
-        "Erro: nenhum código encontrado!"
+        "Erro: nenhum código com revisão encontrado!"
       );
     }, 500);
 
@@ -182,7 +188,7 @@ async function runApplication() {
   setTimeout(() => {
     window.webContents.send(
       "message/sucess",
-      "Alguns códigos foram encontrados!"
+      "Alguns códigos foram encontrados"
     );
   }, 500)
 
@@ -201,8 +207,16 @@ async function runApplication() {
     .then((result) => {
       return new Promise((resolve, reject) => {
         if (!result.canceled) {
-          const filePath = result.filePath;
-          XLSX.writeFile(newWorkbook, filePath);
+          data.savePath = result.filePath;
+          XLSX.writeFile(newWorkbook, data.savePath);
+        } else {
+          setTimeout(() => {
+            window.webContents.send(
+              "message/simpleError",
+              "Operação cancelada"
+            );
+          }, 500)
+          return
         }
 
         setTimeout(() => {
@@ -213,6 +227,17 @@ async function runApplication() {
           window.webContents.send("action/finished");
         }, 500)
 
+        let array = data.savePath.split('\\')
+        array.splice(-1, 1)
+        const string = array.reduce((acc, currentValue) => {
+          if(!currentValue) {
+            return '\\'
+          } else {
+            return acc + '\\' + currentValue;
+          }
+        }, '');
+        
+        exec('start explorer ' + string)
         resolve();
       });
     })

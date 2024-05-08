@@ -1,6 +1,7 @@
 runBtn.addEventListener("click", () => {
   const fileSpan = document.getElementById("new-placeholder");
   const regex = /\.[^.]+$/;
+  alertContainer.innerHTML = "";
 
   if (fileSpan.innerHTML) {
     if (fileSpan.innerHTML.match(regex) == ".xlsx") {

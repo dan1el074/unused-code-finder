@@ -6,12 +6,14 @@ const newPlaceholder = document.getElementById("new-placeholder");
 const inputSearch = document.querySelector(".input-search");
 const alertContainer = document.querySelector(".alert-container");
 const runBtn = document.getElementById("btn-run");
+const temp = 6000;
 let contadorAlert = 0;
 let showDialog = false;
 
 // mandando att pro backend
 searchBtn.addEventListener("click", () => {
   if (!showDialog) {
+    alertContainer.innerHTML = "";
     runBtn.style.backgroundColor = "#1689fc";
     runBtn.style.transition = "1s";
     ipcRenderer.send("action/showDialog");
@@ -57,7 +59,7 @@ ipcRenderer.on("message/notice", (event, data) => {
 
   setTimeout(() => {
     document.getElementById(`alert${contador}`).remove();
-  }, 5000);
+  }, temp)
 });
 
 ipcRenderer.on("message/sucess", (event, data) => {
@@ -72,7 +74,7 @@ ipcRenderer.on("message/sucess", (event, data) => {
 
   setTimeout(() => {
     document.getElementById(`alert${contador}`).remove();
-  }, 5000);
+  }, temp)
 });
 
 ipcRenderer.on("message/sucessPlus", (event, data) => {
@@ -109,5 +111,5 @@ ipcRenderer.on("message/simpleError", (event, data) => {
 
   setTimeout(() => {
     document.getElementById(`alert${contador}`).remove();
-  }, 5000);
+  }, temp)
 });

@@ -16,13 +16,13 @@ Para executar a aplicação, certifique-se de que o seguinte esteja instalado:
 1. Clone este repositório para o seu ambiente local:
 
     ```bash
-    git clone https://github.com/dan1el074/pdf-printer-with-electron.git              
+    git clone git@github.com:dan1el074/unused-code-finder.git
     ```
 
 2. Navegue até o diretório do projeto:
 
     ```bash
-    cd pdf-printer-with-electron
+    cd unused-code-finder
     ```
 
 3. Instale as dependências:
@@ -39,25 +39,29 @@ Para executar a aplicação, certifique-se de que o seguinte esteja instalado:
     npm run build              
     ```
 
-2. Na pasta `dist/ImprimePDF-win32-x64`, apague os seguintes arquivos:
+2. Na pasta `dist/unused-code-finder`, apague os seguintes arquivos:
 
     - `LICENSE`
     - `LICENSES.chromium.html`
+    - `resources/app/example/`
+    - `resources/app/installation/`
     - `resources/app/.gitignore`
     - `resources/app/readme.md`
 
-3. Recorte todos os arquivos presentes em `ImprimePDF-win32-x64`, para `ImprimePDF-win32-x64/resource`
+3. Se quiser usar o aplicativo, basta iniciar `unused-code-finder.exe`. Mas se quiser criar um instaldor, siga os proximos passos: 
 
-4. Copie a pasta `bin`, da raiz do projeto, dentro da pasta `ImprimePDF-win32-x64`
+4. Instale o aplicativo [Install Forge](https://installforge.net/download/);
 
-5. Por fim, copie o arquivo do diretório `instalation/install.bat` dentro de `ImprimePDF-win32-x64`
+5. Com o aplicativo aberto, clique em *open*, e depois selecione o arquivo em `unused-code-finder/installation/install-forge.ifp`;
+
+6. Configure as demais opções como desejar;
 
 ## Uso
 
-- Caso queira iniciar o projeto em ambiente de desenvolvimento, execute o seguinte comando no console:
+- Inicie o instalador com nome de `unused-code-finder-win32-x64.exe`
+
+- Ou se quiser iniciar o projeto em ambiente de desenvolvimento, execute o seguinte comando no console:
 
 ```bash
 npm start
 ```
-
-- Para instalar a aplicação no seu computador, basta iniciar o arquivo `install.bat`, e aperte as teclas **S** ou **N** para responder as perguntas referente a instalação.

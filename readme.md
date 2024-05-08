@@ -1,8 +1,8 @@
-# Aplicação ImprimePDF
+# Aplicação *Unused Code Finder*
 
-![Static Badge](https://img.shields.io/badge/status-finished-green) ![Static Badge](https://img.shields.io/badge/release-v4.2.8-blue)
+![Static Badge](https://img.shields.io/badge/status-finished-green) ![Static Badge](https://img.shields.io/badge/release-v2.0.8-blue)
 
-Este projeto é uma aplicação desktop em **Node.js**, usando o framework **Electron.js**, desenvolvida para o setor de PCP da empresa [Metaro Indústria e Comércio LTDA](https://www.metaro.com.br). Ela realiza uma varredura em um arquivo Excel e extrai códigos que representam projetos, dos quais precisam ser impressos em uma sequencia expecífica.
+Este projeto é uma aplicação desktop em **Node.js**, usando o framework **Electron.js**, desenvolvida para o setor de engenharia da empresa [Metaro Indústria e Comércio LTDA](https://www.metaro.com.br). Ela realiza uma varredura em um arquivo Excel e extrai códigos cujo os quais podem ou não apresentar revisões, tornando obsoleto as verções mais antigas.
 
 ## Pré-requisitos
 

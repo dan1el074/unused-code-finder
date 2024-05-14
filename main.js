@@ -1,5 +1,4 @@
 const { app, BrowserWindow, Menu, dialog, ipcMain } = require("electron");
-const { exec } = require('child_process');
 const path = require("path");
 const XLSX = require("xlsx");
 
@@ -226,18 +225,6 @@ async function runApplication() {
           );
           window.webContents.send("action/finished");
         }, 500)
-
-        let array = data.savePath.split('\\')
-        array.splice(-1, 1)
-        const string = array.reduce((acc, currentValue) => {
-          if(!currentValue) {
-            return '\\'
-          } else {
-            return acc + '\\' + currentValue;
-          }
-        }, '');
-        
-        exec('start explorer ' + string)
         resolve();
       });
     })
